@@ -4,7 +4,7 @@ const { UserSettingsPage } = require('./userSettings.page');
 
 class Application {
   constructor() {
-    this.registratioPage = new RegistrationPage();
+    this.registrationPage = new RegistrationPage();
     this.homePage = new HomePage();
     this.userSettingsPage = new UserSettingsPage();
   }

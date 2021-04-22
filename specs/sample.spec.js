@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const rndNumber = () => Math.floor(Math.random() * (100000 - 1) + 1).toString();
 
-xdescribe('Ragistration:', function () {
+describe('Ragistration:', function () {
   it('Should register user', async function () {
     const uuid = rndNumber();
     const usernameField = await $('[placeholder="Username"]');

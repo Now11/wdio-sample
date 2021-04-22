@@ -14,7 +14,7 @@ describe('Test Suite:', function () {
 
     await browser.url(`${url}/register`);
 
-    await App.registratioPage.register({
+    await App.registrationPage.register({
       username: `test+${uuid}`,
       email: `test+${uuid}@gmail.com`,
       password: 'Pa55word',
@@ -30,7 +30,7 @@ describe('Test Suite:', function () {
 
     await browser.url(`${url}/register`);
 
-    await App.registratioPage.register({
+    await App.registrationPage.register({
       username: `test+${uuid}`,
       email: `test+${uuid}@gmail.com`,
       password: 'Pa55word',
