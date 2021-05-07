@@ -1,27 +1,62 @@
-const { expect } = require('chai');
+const assert = require('assert');
+
 const rndNumber = () => Math.floor(Math.random() * (100000 - 1) + 1).toString();
 
 describe('Ragistration:', function () {
-  it('Should register user', async function () {
+  it('WDIO Test', async function () {
+    await browser.url('https://webdriver.io');
+
+    const title = await browser.getTitle();
+
+    assert.strictEqual(
+      title,
+      'WebdriverIO · Next-gen browser and mobile automation test framework for Node.js | WebdriverIO',
+    );
+  });
+
+  xit('Should register user', async function () {
     const uuid = rndNumber();
-    const usernameField = await $('[placeholder="Username"]');
-    const emailField = await $('[placeholder="Email"]');
-    const passwordField = await $('[placeholder="Password"]');
-    const signUpButton = await $('[type="submit"]');
 
-    const title = await $('li a.ng-binding');
+    await browser.url('/sign-up');
+    await browser.pause(5000);
 
-    await browser.url('https://demo.realworld.io/#/register');
-    await browser.pause(3000);
+    const nameField = await $('input[name="name"]');
+    const surnameField = await $('input[name="surname"]');
+    const birthDateField = await $('input[name="birthdate"]');
+    const emailField = await $('input[name="email"]');
+    const passwordField = await $('input[name="password"]');
+    const retryPasswordField = await $('input[name="retypePassword"]');
+    const phoneField = await $('input[name="phone"]');
 
-    await usernameField.setValue(`test+${uuid}`);
-    await emailField.setValue(`test+${uuid}@gmail.com`);
+    const genderDdl = (await $$('.selectStyles__value-container'))[0];
+
+    const statusDdl = (await $$('.selectStyles__value-container'))[1];
+
+    const selectMale = await $('div.selectStyles__option=male');
+    const selectDoctor = await $('div.selectStyles__option=doctor');
+
+    const signUpButton = await $('input[type="submit"]');
+
+    await nameField.setValue(`John${uuid}`);
+    await surnameField.setValue('Doctor');
+    await birthDateField.setValue('11/11/1999');
+    await emailField.setValue(`test-email+${uuid}@gmail.com`);
     await passwordField.setValue('Pa55word');
+    await retryPasswordField.setValue('Pa55word');
+    await phoneField.setValue('380000000000');
+
+    await genderDdl.click();
+    await selectMale.click();
+
+    await statusDdl.click();
+    await selectDoctor.click();
     await signUpButton.click();
-    await browser.pause(3000);
+    await browser.pause(2000);
 
-    const profileName = await title.getText();
+    const userNameInfo = await $('//div[contains(@class, "header_userInfo")]');
+    const name = await userNameInfo.getText();
 
-    expect(profileName).to.eql(`test+${uuid}`);
+    expect(name).to.be.eql(`John${uuid}`);
+    await browser.pause(5000);
   });
 });
