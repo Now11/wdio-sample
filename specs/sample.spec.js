@@ -18,6 +18,7 @@ describe('Ragistration:', function () {
   xit('Should register user', async function () {
     const uuid = rndNumber();
 
+    await browser.setWindowSize(1440, 960);
     await browser.url('/sign-up');
     await browser.pause(5000);
 
@@ -65,6 +66,7 @@ describe('Ragistration:', function () {
   xit('Should register user', async function () {
     const uuid = rndNumber();
 
+    await browser.setWindowSize(1440, 960);
     await browser.url('/sign-up');
 
     const nameField = await $('input[name="name"]');
