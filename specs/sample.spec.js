@@ -61,6 +61,8 @@ describe('Ragistration:', function () {
 
     expect(name).to.be.eql(`John${uuid}`);
     await browser.pause(5000);
+
+    await browser.reloadSession();
   });
 
   xit('Should register user', async function () {
@@ -68,6 +70,7 @@ describe('Ragistration:', function () {
 
     await browser.setWindowSize(1440, 960);
     await browser.url('/sign-up');
+    await browser.pause(5000);
 
     const nameField = await $('input[name="name"]');
     const surnameField = await $('input[name="surname"]');
@@ -127,5 +130,7 @@ describe('Ragistration:', function () {
     const name = await userNameInfo.getText();
 
     expect(name).to.be.eql(`John${uuid}`);
+
+    await browser.reloadSession();
   });
 });
