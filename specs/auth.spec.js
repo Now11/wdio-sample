@@ -4,10 +4,17 @@ const { expect } = require('chai');
 const rndNumber = () => Math.floor(Math.random() * (100000 - 1) + 1).toString();
 
 describe('Authorization:', function () {
+  beforeEach(async function () {
+    await browser.setWindowSize(1440, 960);
+    await browser.url('/sign-up');
+  });
+
+  afterEach(async function () {
+    await browser.reloadSession();
+  });
+
   it('Register new account', async function () {
     const uuid = rndNumber();
-
-    await browser.url('/sign-up');
 
     await app.authPage.register({
       name: `John${uuid}`,
