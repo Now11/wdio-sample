@@ -13,6 +13,8 @@ describe('Authorization:', function () {
       name: `John${uuid}`,
       email: `test-email+${uuid}@gmail.com`,
       password: 'password',
+      gender: 'female',
+      status: 'doctor',
     });
 
     const name = await app.header.getUserName();
