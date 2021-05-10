@@ -60,7 +60,7 @@ exports.config = {
       browserName: 'chrome',
       acceptInsecureCerts: true,
       'goog:chromeOptions': {
-        args: ['window-size=1440,960', '--disable-notifications'],
+        args: ['--disable-notifications'],
       },
       // If outputDir is provided WebdriverIO can capture driver session logs
       // it is possible to configure which logTypes to include/exclude.
@@ -76,6 +76,9 @@ exports.config = {
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
   logLevel: 'info',
+
+  //outputDir: './output',
+
   //
   // Set specific log levels per logger
   // loggers:
@@ -144,7 +147,7 @@ exports.config = {
   // See the full list at http://mochajs.org/
   mochaOpts: {
     ui: 'bdd',
-    timeout: 60000,
+    timeout: 600000,
   },
   //
   // =====
