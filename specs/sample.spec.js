@@ -1,7 +1,7 @@
 const assert = require('assert');
 const { expect } = require('chai');
 
-const rndNumber = () => Math.floor(Math.random() * (100000 - 1) + 1).toString();
+const rndNumber = () => Math.floor(Math.random() * 100000).toString();
 
 describe('Ragistration:', function () {
   xit('WDIO Test', async function () {
