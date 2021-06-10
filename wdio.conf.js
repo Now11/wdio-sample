@@ -44,7 +44,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 1,
+  maxInstances: 10,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -55,13 +55,10 @@ exports.config = {
       // maxInstances can get overwritten per capability. So if you have an in-house Selenium
       // grid with only 5 firefox instances available you can make sure that not more than
       // 5 instances get started at a time.
-      maxInstances: 1,
+      maxInstances: 5,
       //
       browserName: 'chrome',
       acceptInsecureCerts: true,
-      'goog:chromeOptions': {
-        args: ['--disable-notifications'],
-      },
       // If outputDir is provided WebdriverIO can capture driver session logs
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -76,9 +73,6 @@ exports.config = {
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
   logLevel: 'info',
-
-  //outputDir: './output',
-
   //
   // Set specific log levels per logger
   // loggers:
@@ -147,7 +141,7 @@ exports.config = {
   // See the full list at http://mochajs.org/
   mochaOpts: {
     ui: 'bdd',
-    timeout: 600000,
+    timeout: 60000,
   },
   //
   // =====

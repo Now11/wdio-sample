@@ -1,11 +1,9 @@
 const { AuthPage } = require('./auth.page');
-const { HeaderFragment } = require('./header.fragment');
 
-class Application {
+class App {
   constructor() {
     this.authPage = new AuthPage();
-    this.header = new HeaderFragment();
   }
 }
 
-exports.app = new Application();
+module.exports = { App };

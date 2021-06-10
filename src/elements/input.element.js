@@ -1,17 +1,20 @@
 const { BaseElement } = require('./base.element');
 
 class Input extends BaseElement {
-  constructor(selector) {
-    super(selector);
+  constructor(selector, index) {
+    super(selector, index);
   }
 
-  async setValue(value) {
-    const element = await $(this.selector);
+  async setValue(text) {
+    let element;
+    if (this.index) {
+      element = (await $$(this.selector))[this.index];
+    } else {
+      element = await $(this.selector);
+    }
     await this.waitForVisible(element);
-    await element.setValue(value);
+    await element.setValue(text);
   }
 }
 
-module.exports = {
-  Input,
-};
+module.exports = { Input };
